@@ -2,6 +2,7 @@
 OlOfflineMobile
 openlayers 移动端离线数据加载项目。包括mbtiles切片和shapefile文件 geojson文件等。要配合hbuilder的android打包项目
 示例：
+```
 <template>
     <div id="map" ref="map" class="map"></div>
 </template>
@@ -54,38 +55,7 @@ export default {
   				path: localMbTilesPath,
   				projection: gisqOlMobileProj.proj3857.proj
   			});
-			/* var source1 = new vectorSource({
-			    	wrapX: false
-			});
-			shpjs("shp/xzc/XZQ").then(function(geojson){
-					//do something with your geojson
-				console.log(geojson);
-				var obj={};
-				
-				obj.crs={
-					"type": "name",
-					"properties": {
-						"name": "EPSG:4528",
-					},
-				};
-				obj.type="FeatureCollection";
-				obj.totalFeatures="unknown";
-				obj.features=geojson.features;
-				var features=(new GeoJSON({
-					dataProjection:gisqOlMobileProj.proj4528.proj,
-					featureProjection: gisqOlMobileProj.proj3857.proj,
-				})).readFeatures(geojson)
-				console.log(features);
-				source1.addFeatures(features);
-				
-			});
-			var style=new gisqOlMobileStyle().styleFunction
-			console.log(style)
-			var vectorShp = new VectorLayer({
-				source: source1,
-				projection: "EPSG:3857",
-				style:style
-			}); */
+			
   			var map = new OlMap({
   				target: 'map', 
   				layers: [ /* new TileLayer({
@@ -110,3 +80,4 @@ export default {
 		height: 100%;
 	}
 </style>
+```
