@@ -19,7 +19,8 @@
 		gisqOlMobileProj,
 		GisqOfflineShpLayer,
 		GisqOfflineMbTilesLayer,
-		gisqOlMobileStyle
+		gisqOlMobileStyle,
+		GisqOfflineGeoJsonLayer
 	} from "gisq-ol-mobile-offline"
 	export default {
 		name: 'HelloWorld',
@@ -47,7 +48,9 @@
 		methods: {
 			initMap() {
 				var localMbTilesPath = "/sdcard/gisqmap/cr.mbtiles";
+				localMbTilesPath = "/sdcard/gisqmap/A3857.sqlite";
 				var localShpPath = "/sdcard/gisqmap/shp/xzc";
+				var localGeoJsonSqlPath = "/sdcard/gisqmap/geojson/xhq_dk.sqlite";
 				var gisqShpLayer = new GisqOfflineShpLayer({
 					path: localShpPath,
 					featureName: "XZQ",
@@ -57,20 +60,24 @@
 					path: localMbTilesPath,
 					projection: gisqOlMobileProj.proj3857.proj
 				});
-				
+				var geoJsonTile=new GisqOfflineGeoJsonLayer({
+					path: localGeoJsonSqlPath,
+					dataProjection: gisqOlMobileProj.proj3857.proj,
+					featureProjection: gisqOlMobileProj.proj3857.proj,
+				});
 				var map = new OlMap({
 					target: 'map',
 					layers: [
 						/* new TileLayer({
 					source: new OSM()
 				}) */
-						mblayers.getLayer(), gisqShpLayer.getLayer()
+						mblayers.getLayer(), gisqShpLayer.getLayer(),geoJsonTile.getVectorTileLayer()
 					],
 					view: new View({
 						center: transform([120, 30], 'EPSG:4326', 'EPSG:3857'),
 						zoom: 9,
 						minZoom: 1,
-						maxZoom: 15
+						maxZoom: 19
 					})
 				});
 			}
