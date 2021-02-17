@@ -13,7 +13,7 @@ module.exports = {
 	assetsDir: 'static', //静态资源目录(js、css、img、fonts)，相对outputDir的目录(默认'')
 	indexPath: 'index.html', //指定生成index.html的输出路径(相对outputDir)也可以是绝对路径
 	lintOnSave: true, //是否开启ESlint（保存时检查）
-	productionSourceMap: false, //生产环境是否生成 sourceMap 文件
+	productionSourceMap: true, //生产环境是否生成 sourceMap 文件
 	pages: { //pages里配置的路径和文件名在你的文档目录必须存在，否则启动服务会报错
 		index: { //除了 entry 之外都是可选的
 			entry: 'src/main.js', //page的主入口
