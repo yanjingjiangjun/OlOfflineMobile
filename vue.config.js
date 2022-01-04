@@ -1,6 +1,6 @@
 const IS_PROD = process.env.NODE_ENV === 'production'
 const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 //const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 function resolve(dir) {
 	return path.join(__dirname, dir)
@@ -79,6 +79,11 @@ module.exports = {
 			sourceMap: false,
 			parallel: true
 		  })*/
+		  new CopyWebpackPlugin([
+		              { from: 'node_modules/@liveqing/liveplayer/dist/component/crossdomain.xml'},
+		              { from: 'node_modules/@liveqing/liveplayer/dist/component/liveplayer-lib.min.js', to: 'js/'},
+		              { from: 'node_modules/@liveqing/liveplayer/dist/component/liveplayer.swf'}
+		          ])
 		] 
 	}/* ,
 	chainWebpack(config) {
